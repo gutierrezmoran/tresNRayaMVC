@@ -14,6 +14,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.border.LineBorder;
+import java.awt.Cursor;
 
 public class Botonera extends JPanel {
 
@@ -27,6 +28,7 @@ public class Botonera extends JPanel {
 	private final int MINB = 110;
 
 	public Botonera() {
+		setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 		iniciarBotonera();
 	}
 
@@ -64,6 +66,7 @@ public class Botonera extends JPanel {
 		this.botones[i][j].setBorder(null);
 		this.botones[i][j].setFocusPainted(false); // quita borde foco
 		this.botones[i][j].setForeground(new Color(0, 0, 0));
+		this.botones[i][j].setCursor(Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR));
 		int a = i;
 		int b = j;
 		this.botones[i][j].addMouseListener(new MouseAdapter() {

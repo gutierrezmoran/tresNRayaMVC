@@ -96,7 +96,9 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		btnReiniciar.setVisible(true);
 		botonera.botones[i][j].setEnabled(false);
 		if (control.tablero[i][j] == control.verTurno()) {
-			botonera.botones[i][j].setBackground(new Color(200, 248, 255));
+			botonera.botones[i][j].setBackground(new Color(178, 255, 208));
+		} else {
+			botonera.botones[i][j].setBackground(Color.WHITE);
 		}
 	}
 

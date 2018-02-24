@@ -13,8 +13,12 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.BoxLayout;
 import java.awt.GridLayout;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.GridBagLayout;
 import javax.swing.JButton;
+import java.awt.SystemColor;
+import java.awt.Cursor;
 
 public class TresNRayaUI extends JFrame {
 
@@ -38,19 +42,26 @@ public class TresNRayaUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		botonera=new Botonera();
+		botonera.setBackground(new Color(220, 220, 220));
 		botonera.setBounds(0, 55, 380, 380);
 		botonera.setBorder(javax.swing.BorderFactory.createEmptyBorder());
 		contentPane.add(botonera);
 		botonera.setLayout(new BorderLayout(0, 0));
 		
-		JLabel lblTresEnRaya = new JLabel("TRES EN RAYA");
-		lblTresEnRaya.setOpaque(true);
-		lblTresEnRaya.setBackground(Color.DARK_GRAY);
-		lblTresEnRaya.setHorizontalAlignment(SwingConstants.CENTER);
-		lblTresEnRaya.setForeground(Color.WHITE);
-		lblTresEnRaya.setFont(new Font("Arial", Font.ITALIC, 25));
-		lblTresEnRaya.setBounds(0, 0, 380, 52);
-		contentPane.add(lblTresEnRaya);
+		JPanel Titulo = new JPanel();
+		Titulo.setOpaque(true);
+		Titulo.setBackground(Color.DARK_GRAY);
+		Titulo.setForeground(Color.WHITE);
+		Titulo.setFont(new Font("Bahnschrift", Font.PLAIN, 30));
+		Titulo.setBounds(0, 0, 380, 52);
+		contentPane.add(Titulo);
+		Titulo.setLayout(null);
+		
+		JLabel lblTitulo = new JLabel("TRES EN RAYA");
+		lblTitulo.setForeground(SystemColor.controlHighlight);
+		lblTitulo.setFont(new Font("Microsoft Yi Baiti", Font.PLAIN, 40));
+		lblTitulo.setBounds(10, 0, 370, 47);
+		Titulo.add(lblTitulo);
 		
 		txtMensaje = new JLabel("");
 		txtMensaje.setVisible(false);
@@ -63,9 +74,9 @@ public class TresNRayaUI extends JFrame {
 		contentPane.add(txtMensaje);
 		
 		txtJugada = new JLabel("");
-		txtJugada.setHorizontalAlignment(SwingConstants.CENTER);
+		txtJugada.setHorizontalAlignment(SwingConstants.RIGHT);
 		txtJugada.setFont(new Font("Arial", Font.BOLD, 12));
-		txtJugada.setBounds(343, 442, 37, 14);
+		txtJugada.setBounds(341, 437, 27, 14);
 		contentPane.add(txtJugada);
 		
 		txtTurno = new JLabel("");
@@ -76,15 +87,26 @@ public class TresNRayaUI extends JFrame {
 		
 		JLabel lblJugadaActual = new JLabel("Jugada actual");
 		lblJugadaActual.setFont(new Font("Tahoma", Font.BOLD, 9));
-		lblJugadaActual.setBounds(270, 442, 80, 14);
+		lblJugadaActual.setBounds(277, 437, 74, 14);
 		contentPane.add(lblJugadaActual);
 		
 		btnReiniciar = new JButton("Reiniciar");
+		btnReiniciar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnReiniciar.setBorder(null);
-		btnReiniciar.setBackground(Color.LIGHT_GRAY);
+		btnReiniciar.setBackground(Color.ORANGE);
 		btnReiniciar.setFont(new Font("Tahoma", Font.BOLD, 15));
 		btnReiniciar.setVisible(false);
-		btnReiniciar.setBounds(10, 530, 358, 30);
+		btnReiniciar.setFocusPainted(false);
+		btnReiniciar.setBounds(219, 516, 149, 44);
+		btnReiniciar.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent arg0) {
+				btnReiniciar.setBackground(new Color(255, 219, 86));
+			}
+
+			public void mouseExited(MouseEvent e) {
+				btnReiniciar.setBackground(Color.ORANGE);
+			}
+		});
 		contentPane.add(btnReiniciar);
 	}
 }
