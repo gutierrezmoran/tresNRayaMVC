@@ -22,6 +22,7 @@ public class TresNRayaUI extends JFrame {
 	protected JLabel txtTurno;
 	protected JLabel txtJugada;
 	protected JButton btnReiniciar;
+	protected JLabel txtEstado;
 
 	/**
 	 * Create the frame.
@@ -68,9 +69,9 @@ public class TresNRayaUI extends JFrame {
 		contentPane.add(txtMensaje);
 		
 		txtJugada = new JLabel("");
-		txtJugada.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtJugada.setFont(new Font("Arial", Font.BOLD, 12));
-		txtJugada.setBounds(341, 437, 27, 14);
+		txtJugada.setHorizontalAlignment(SwingConstants.LEFT);
+		txtJugada.setFont(new Font("Arial Black", Font.PLAIN, 12));
+		txtJugada.setBounds(351, 437, 27, 18);
 		contentPane.add(txtJugada);
 		
 		txtTurno = new JLabel("");
@@ -79,9 +80,10 @@ public class TresNRayaUI extends JFrame {
 		txtTurno.setBounds(4, 439, 30, 30);
 		contentPane.add(txtTurno);
 		
-		JLabel lblJugadaActual = new JLabel("Jugada actual");
-		lblJugadaActual.setFont(new Font("Tahoma", Font.BOLD, 9));
-		lblJugadaActual.setBounds(277, 437, 74, 14);
+		JLabel lblJugadaActual = new JLabel("JUGADA ACTUAL");
+		lblJugadaActual.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblJugadaActual.setFont(new Font("Arial Black", Font.BOLD, 12));
+		lblJugadaActual.setBounds(209, 437, 132, 18);
 		contentPane.add(lblJugadaActual);
 		
 		btnReiniciar = new JButton("Reiniciar");
@@ -102,5 +104,12 @@ public class TresNRayaUI extends JFrame {
 			}
 		});
 		contentPane.add(btnReiniciar);
+		
+		txtEstado = new JLabel("COLOCA FICHA");
+		txtEstado.setForeground(Color.GRAY);
+		txtEstado.setHorizontalAlignment(SwingConstants.RIGHT);
+		txtEstado.setFont(new Font("Arial Black", Font.BOLD, 12));
+		txtEstado.setBounds(209, 456, 132, 18);
+		contentPane.add(txtEstado);
 	}
 }

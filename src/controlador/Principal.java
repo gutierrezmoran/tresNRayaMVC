@@ -3,6 +3,7 @@ package controlador;
 import java.awt.EventQueue;
 
 public class Principal {
+
 	/**
 	 * Launch the application.
 	 */

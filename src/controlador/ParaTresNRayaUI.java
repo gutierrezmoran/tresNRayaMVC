@@ -16,18 +16,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	public ParaTresNRayaUI() {
 		super();
 
-		// Iniciamos el tablero y los mensajes
-		this.botonera.botones[1][1].setText("O");
-		txtJugada.setText(String.valueOf(control.numerojugada));
-		txtTurno.setText(String.valueOf(control.retornaSimbolo(control.verTurno())));
-		txtMensaje.setText(control.muestraLetrero());
-
-		// Preparamos la botonera añadiendo los listener
-		for (int i = 0; i < this.botonera.botones.length; i++) {
-			for (int j = 0; j < this.botonera.botones[i].length; j++) {
-				this.botonera.botones[i][j].addActionListener(listener);
-			}
-		}
+		inicializarPartida();
 
 		btnReiniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -35,8 +24,14 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 			}
 		});
 
-	} // CIERRE CONSTRUCTOR
+	}
 
+	/**
+	 * Ejecuta la partida
+	 * 
+	 * @param coordenada
+	 *            Nombre del boton que representa su coordenada dentro de una matriz
+	 */
 	public void jugar(String coordenada) {
 		int x = Character.getNumericValue(coordenada.charAt(0));
 		int y = Character.getNumericValue(coordenada.charAt(1));
@@ -45,18 +40,22 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		control.destinoy = y;
 
 		if (control.realizarJugada()) {
-			botonera.botones[x][y].setText(String.valueOf(control.retornaSimbolo(control.verTurno())));
-			if(!control.mover) {
+			botonera.getBotones()[x][y].setText(String.valueOf(control.retornaSimbolo(control.verTurno())));
+
+			if (control.numerojugada > 6) {
+				txtEstado.setText("MUEVE FICHA");
+			}
+
+			if (!control.mover) {
 				this.a = x;
 				this.b = y;
-				//botonera.botones[x][y].setBackground(Color.BLUE);
-				botonera.botones[x][y].setEnabled(false);
+
+				botonera.getBotones()[x][y].setEnabled(false);
 			} else {
-				//botonera.botones[x][y].setBackground(botonera.obtenerBackgroundBoton(botonera.getMAXR(), botonera.getMINR(),
-						//botonera.getMAXG(), botonera.getMING(), botonera.getMAXB(), botonera.getMINB()));
-				botonera.botones[this.a][this.b].setBackground(botonera.obtenerBackgroundBoton(botonera.getMAXR(), botonera.getMINR(),
-						botonera.getMAXG(), botonera.getMING(), botonera.getMAXB(), botonera.getMINB()));
-				botonera.botones[this.a][this.b].setEnabled(true);
+				botonera.getBotones()[this.a][this.b]
+						.setBackground(botonera.obtenerBackgroundBoton(botonera.getMAXR(), botonera.getMINR(),
+								botonera.getMAXG(), botonera.getMING(), botonera.getMAXB(), botonera.getMINB()));
+				botonera.getBotones()[this.a][this.b].setEnabled(true);
 			}
 			txtMensaje.setVisible(false);
 		} else {
@@ -66,20 +65,26 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 
 		if (control.numerojugada >= 6) {
 			if (control.comprobarTresEnRaya()) {
-				finalizarJuego();
+				finalizarPartida();
 			}
 		}
 
-		actualizarJuego(false);
+		actualizarPartida(false);
 	}
 
-	private void actualizarJuego(boolean finalizar) {
+	/**
+	 * Actualiza el estado de la partida
+	 * 
+	 * @param finalizar
+	 *            Representa si la partida ha terminado
+	 */
+	private void actualizarPartida(boolean finalizar) {
 		txtJugada.setText(String.valueOf(control.numerojugada));
 		txtTurno.setText(String.valueOf(control.retornaSimbolo(control.verTurno())));
 
-		for (int i = 0; i < botonera.botones.length; i++) {
-			for (int j = 0; j < botonera.botones[i].length; j++) {
-				botonera.botones[i][j].setText(String.valueOf(control.retornaSimbolo(control.tablero[i][j])));
+		for (int i = 0; i < botonera.getBotones().length; i++) {
+			for (int j = 0; j < botonera.getBotones()[i].length; j++) {
+				botonera.getBotones()[i][j].setText(String.valueOf(control.retornaSimbolo(control.tablero[i][j])));
 				if (finalizar) {
 					cerrarBotonera(i, j);
 				}
@@ -92,25 +97,39 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 
 	}
 
+	/**
+	 * Deshabilita la botonera
+	 * 
+	 * @param i
+	 *            Posicion del boton en la matriz
+	 * @param j
+	 *            Posicion del boton en la matriz
+	 */
 	private void cerrarBotonera(int i, int j) {
 		btnReiniciar.setVisible(true);
-		botonera.botones[i][j].setEnabled(false);
+		botonera.getBotones()[i][j].setEnabled(false);
 		if (control.tablero[i][j] == control.verTurno()) {
-			botonera.botones[i][j].setBackground(new Color(178, 255, 208));
+			botonera.getBotones()[i][j].setBackground(new Color(178, 255, 208));
 		} else {
-			botonera.botones[i][j].setBackground(Color.WHITE);
+			botonera.getBotones()[i][j].setBackground(Color.WHITE);
 		}
 	}
 
-	private void finalizarJuego() {
+	/**
+	 * Finaliza la partida
+	 */
+	private void finalizarPartida() {
 		control.numerojugada++;
 		txtMensaje.setText("Jugador '" + control.retornaSimbolo(control.verTurno()) + "', TU GANAS");
 		txtMensaje.setBackground(new Color(0, 93, 67));
 		txtMensaje.setForeground(Color.WHITE);
 		txtMensaje.setVisible(true);
-		actualizarJuego(true);
+		actualizarPartida(true);
 	}
 
+	/**
+	 * Restablece los valores de la partida a su estado inicial
+	 */
 	private void reiniciarPartida() {
 		int[][] tableroVacio = { { 0, 0, 0 }, { 0, 1, 0 }, { 0, 0, 0 } };
 		control.tablero = tableroVacio;
@@ -120,13 +139,30 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		txtMensaje.setBackground(Color.ORANGE);
 		txtMensaje.setForeground(Color.DARK_GRAY);
 		txtMensaje.setVisible(false);
-		for (int i = 0; i < botonera.botones.length; i++) {
-			for (int j = 0; j < botonera.botones[i].length; j++) {
-				botonera.botones[i][j].setEnabled(true);
-				botonera.botones[i][j]
+		txtEstado.setText("COLOCA FICHA");
+		for (int i = 0; i < botonera.getBotones().length; i++) {
+			for (int j = 0; j < botonera.getBotones()[i].length; j++) {
+				botonera.getBotones()[i][j].setEnabled(true);
+				botonera.getBotones()[i][j]
 						.setBackground(botonera.obtenerBackgroundBoton(botonera.getMAXR(), botonera.getMINR(),
 								botonera.getMAXG(), botonera.getMING(), botonera.getMAXB(), botonera.getMINB()));
-				actualizarJuego(false);
+				actualizarPartida(false);
+			}
+		}
+	}
+
+	/**
+	 * Asigna valores iniciales a los diferentes componentes graficos de la partida
+	 */
+	private void inicializarPartida() {
+		this.botonera.getBotones()[1][1].setText("O");
+		txtJugada.setText(String.valueOf(control.numerojugada));
+		txtTurno.setText(String.valueOf(control.retornaSimbolo(control.verTurno())));
+		txtMensaje.setText(control.muestraLetrero());
+
+		for (int i = 0; i < this.botonera.getBotones().length; i++) {
+			for (int j = 0; j < this.botonera.getBotones()[i].length; j++) {
+				this.botonera.getBotones()[i][j].addActionListener(listener);
 			}
 		}
 	}
