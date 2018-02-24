@@ -54,7 +54,7 @@ public class Botonera extends JPanel {
 		this.botones[i][j].setName(String.valueOf(i) + String.valueOf(j));
 		this.botones[i][j].setBounds(coordenadaXBoton, coordenadaYBoton, this.ladoBoton, this.ladoBoton);
 		this.botones[i][j].setBackground(obtenerBackgroundBoton(this.MAXR, this.MINR, this.MAXG, this.MING, this.MAXB, this.MINB));
-		this.botones[i][j].setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 120));
+		this.botones[i][j].setFont(new Font("Microsoft YaHei UI Light", Font.PLAIN, 130));
 		this.botones[i][j].setBorder(null);
 		this.botones[i][j].setFocusPainted(false); // quita borde foco
 		this.botones[i][j].setForeground(new Color(0, 0, 0));

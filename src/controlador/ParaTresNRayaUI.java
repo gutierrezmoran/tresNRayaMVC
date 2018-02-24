@@ -117,6 +117,8 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		control.numerojugada = 2;
 		control.mover = true;
 		btnReiniciar.setVisible(false);
+		txtMensaje.setBackground(Color.ORANGE);
+		txtMensaje.setForeground(Color.DARK_GRAY);
 		txtMensaje.setVisible(false);
 		for (int i = 0; i < botonera.botones.length; i++) {
 			for (int j = 0; j < botonera.botones[i].length; j++) {
