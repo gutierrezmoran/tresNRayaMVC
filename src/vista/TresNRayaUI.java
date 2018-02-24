@@ -62,9 +62,9 @@ public class TresNRayaUI extends JFrame {
 		txtMensaje.setVisible(false);
 		txtMensaje.setOpaque(true);
 		txtMensaje.setHorizontalAlignment(SwingConstants.CENTER);
-		txtMensaje.setForeground(Color.DARK_GRAY);
+		txtMensaje.setForeground(Color.WHITE);
 		txtMensaje.setFont(new Font("Arial Narrow", Font.BOLD, 13));
-		txtMensaje.setBackground(Color.ORANGE);
+		txtMensaje.setBackground(Color.RED);
 		txtMensaje.setBounds(0, 571, 380, 35);
 		contentPane.add(txtMensaje);
 		
