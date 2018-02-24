@@ -23,6 +23,7 @@ public class TresNRayaUI extends JFrame {
 	protected JLabel txtJugada;
 	protected JButton btnReiniciar;
 	protected JLabel txtEstado;
+	protected JButton btnCancelar;
 
 	/**
 	 * Create the frame.
@@ -57,6 +58,8 @@ public class TresNRayaUI extends JFrame {
 		lblTitulo.setFont(new Font("Microsoft Yi Baiti", Font.PLAIN, 40));
 		lblTitulo.setBounds(10, 0, 370, 47);
 		Titulo.add(lblTitulo);
+		//btnAbout.addActionListener(arg0);
+		
 		
 		txtMensaje = new JLabel("");
 		txtMensaje.setVisible(false);
@@ -108,8 +111,24 @@ public class TresNRayaUI extends JFrame {
 		txtEstado = new JLabel("COLOCA FICHA");
 		txtEstado.setForeground(Color.GRAY);
 		txtEstado.setHorizontalAlignment(SwingConstants.RIGHT);
-		txtEstado.setFont(new Font("Arial Black", Font.BOLD, 12));
-		txtEstado.setBounds(209, 456, 132, 18);
+		txtEstado.setFont(new Font("Arial Black", Font.BOLD, 10));
+		txtEstado.setBounds(235, 456, 106, 18);
 		contentPane.add(txtEstado);
+		
+		JLabel lblDesarrolladoPorJos = new JLabel("Desarrollado por Jos\u00E9 Emilio Guti\u00E9rrez");
+		lblDesarrolladoPorJos.setFont(new Font("Arial", Font.BOLD, 11));
+		lblDesarrolladoPorJos.setForeground(Color.DARK_GRAY);
+		lblDesarrolladoPorJos.setHorizontalAlignment(SwingConstants.CENTER);
+		lblDesarrolladoPorJos.setBounds(10, 581, 358, 14);
+		contentPane.add(lblDesarrolladoPorJos);
+		
+		btnCancelar = new JButton("X");
+		btnCancelar.setVisible(false);
+		btnCancelar.setBorder(null);
+		btnCancelar.setForeground(new Color(200, 0, 0));
+		btnCancelar.setBackground(new Color(255, 200, 200));
+		btnCancelar.setFont(new Font("Arial Black", Font.BOLD, 10));
+		btnCancelar.setBounds(349, 458, 15, 15);
+		contentPane.add(btnCancelar);
 	}
 }

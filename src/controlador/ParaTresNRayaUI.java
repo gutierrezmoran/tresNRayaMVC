@@ -12,6 +12,8 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	MyActionListener listener = new MyActionListener(control, this);
 	int a = 0;
 	int b = 0;
+	int x;
+	int y;
 
 	public ParaTresNRayaUI() {
 		super();
@@ -21,6 +23,12 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		btnReiniciar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reiniciarPartida();
+			}
+		});
+		
+		btnCancelar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				cancelarSeleccionMover();
 			}
 		});
 
@@ -33,9 +41,9 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	 *            Nombre del boton que representa su coordenada dentro de una matriz
 	 */
 	public void jugar(String coordenada) {
-		int x = Character.getNumericValue(coordenada.charAt(0));
-		int y = Character.getNumericValue(coordenada.charAt(1));
-
+		this.x = Character.getNumericValue(coordenada.charAt(0));
+		this.y = Character.getNumericValue(coordenada.charAt(1));
+		
 		control.destinox = x;
 		control.destinoy = y;
 
@@ -51,7 +59,9 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 				this.b = y;
 
 				botonera.getBotones()[x][y].setEnabled(false);
+				btnCancelar.setVisible(true);
 			} else {
+				btnCancelar.setVisible(false);
 				botonera.getBotones()[this.a][this.b]
 						.setBackground(botonera.obtenerBackgroundBoton(botonera.getMAXR(), botonera.getMINR(),
 								botonera.getMAXG(), botonera.getMING(), botonera.getMAXB(), botonera.getMINB()));
@@ -59,6 +69,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 			}
 			txtMensaje.setVisible(false);
 		} else {
+			
 			txtMensaje.setVisible(true);
 			txtMensaje.setText(control.indicarAnomalia());
 		}
@@ -136,6 +147,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		control.numerojugada = 2;
 		control.mover = true;
 		btnReiniciar.setVisible(false);
+		btnCancelar.setVisible(false);
 		txtMensaje.setBackground(Color.ORANGE);
 		txtMensaje.setForeground(Color.DARK_GRAY);
 		txtMensaje.setVisible(false);
@@ -164,6 +176,17 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 			for (int j = 0; j < this.botonera.getBotones()[i].length; j++) {
 				this.botonera.getBotones()[i][j].addActionListener(listener);
 			}
+		}
+	}
+	
+	/**
+	 * Deshace la seleccion de una casilla que se quiere mover
+	 */
+	private void cancelarSeleccionMover() {
+		if(!botonera.getBotones()[x][y].isEnabled()) {
+			botonera.getBotones()[x][y].setEnabled(true);
+			control.mover = true;
+			btnCancelar.setVisible(false);
 		}
 	}
 }
