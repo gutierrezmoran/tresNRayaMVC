@@ -2,8 +2,6 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.sound.sampled.Control;
 import javax.swing.JButton;
 
 public class MyActionListener implements ActionListener {

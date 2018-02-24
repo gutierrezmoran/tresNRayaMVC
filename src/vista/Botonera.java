@@ -1,19 +1,11 @@
 package vista;
 
 import javax.swing.JPanel;
-
-import controlador.MyActionListener;
-
 import java.awt.Color;
-
-import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import java.awt.Font;
-import java.awt.Insets;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
-import javax.swing.border.LineBorder;
 import java.awt.Cursor;
 
 public class Botonera extends JPanel {
