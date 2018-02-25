@@ -123,6 +123,7 @@ public class TresNRayaUI extends JFrame {
 		contentPane.add(lblDesarrolladoPorJos);
 		
 		btnCancelar = new JButton("X");
+		btnCancelar.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		btnCancelar.setVisible(false);
 		btnCancelar.setBorder(null);
 		btnCancelar.setForeground(new Color(200, 0, 0));
