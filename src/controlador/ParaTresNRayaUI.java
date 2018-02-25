@@ -183,10 +183,14 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	 * Deshace la seleccion de una casilla que se quiere mover
 	 */
 	private void cancelarSeleccionMover() {
-		if(!botonera.getBotones()[x][y].isEnabled()) {
-			botonera.getBotones()[x][y].setEnabled(true);
-			control.mover = true;
-			btnCancelar.setVisible(false);
+		for (int i = 0; i < botonera.getBotones().length; i++) {
+			for (int j = 0; j < botonera.getBotones().length; j++) {
+				if(!botonera.getBotones()[i][j].isEnabled()) {
+					botonera.getBotones()[i][j].setEnabled(true);
+					control.mover = true;
+					btnCancelar.setVisible(false);
+				}
+			}
 		}
 	}
 }
