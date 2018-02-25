@@ -13,6 +13,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JButton;
 import java.awt.SystemColor;
 import java.awt.Cursor;
+import java.awt.Toolkit;
 
 public class TresNRayaUI extends JFrame {
 
@@ -29,9 +30,11 @@ public class TresNRayaUI extends JFrame {
 	 * Create the frame.
 	 */
 	public TresNRayaUI() {
+		setIconImage(Toolkit.getDefaultToolkit().getImage(TresNRayaUI.class.getResource("/img/icon.jpg")));
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 384, 635);
+		setLocationRelativeTo(null);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(250, 250, 250));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));

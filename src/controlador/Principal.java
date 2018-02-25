@@ -15,7 +15,6 @@ public class Principal {
 				try {
 					ParaTresNRayaUI frame = new ParaTresNRayaUI();
 					frame.setVisible(true);
-					frame.setIconImage(new ImageIcon(getClass().getResource("../img/icon.jpg")).getImage());
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
