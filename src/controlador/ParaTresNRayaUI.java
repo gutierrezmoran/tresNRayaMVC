@@ -148,8 +148,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 		control.mover = true;
 		btnReiniciar.setVisible(false);
 		btnCancelar.setVisible(false);
-		txtMensaje.setBackground(Color.ORANGE);
-		txtMensaje.setForeground(Color.DARK_GRAY);
+		txtMensaje.setBackground(Color.RED);
 		txtMensaje.setVisible(false);
 		txtEstado.setText("COLOCA FICHA");
 		for (int i = 0; i < botonera.getBotones().length; i++) {
