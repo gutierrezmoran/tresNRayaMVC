@@ -58,8 +58,6 @@ public class TresNRayaUI extends JFrame {
 		lblTitulo.setFont(new Font("Microsoft Yi Baiti", Font.PLAIN, 40));
 		lblTitulo.setBounds(10, 0, 370, 47);
 		Titulo.add(lblTitulo);
-		//btnAbout.addActionListener(arg0);
-		
 		
 		txtMensaje = new JLabel("");
 		txtMensaje.setVisible(false);
