@@ -3,6 +3,10 @@ package controlador;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.Timer;
 
 import vista.TresNRayaUI;
 
@@ -17,7 +21,16 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 
 	public ParaTresNRayaUI() {
 		super();
-
+		
+		Timer timer = new Timer(4000, new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				splash.setVisible(false);
+				botonera.setVisible(true);
+			}
+		});
+		
+		timer.start();
+		
 		inicializarPartida();
 
 		btnReiniciar.addActionListener(new ActionListener() {
@@ -25,10 +38,20 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 				reiniciarPartida();
 			}
 		});
-		
+
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				cancelarSeleccionMover();
+			}
+		});
+		
+		btnReiniciar.addMouseListener(new MouseAdapter() {
+			public void mouseEntered(MouseEvent arg0) {
+				btnReiniciar.setBackground(new Color(255, 219, 86));
+			}
+
+			public void mouseExited(MouseEvent e) {
+				btnReiniciar.setBackground(Color.ORANGE);
 			}
 		});
 
@@ -43,7 +66,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 	public void jugar(String coordenada) {
 		this.x = Character.getNumericValue(coordenada.charAt(0));
 		this.y = Character.getNumericValue(coordenada.charAt(1));
-		
+
 		control.destinox = x;
 		control.destinoy = y;
 
@@ -69,7 +92,7 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 			}
 			txtMensaje.setVisible(false);
 		} else {
-			
+
 			txtMensaje.setVisible(true);
 			txtMensaje.setText(control.indicarAnomalia());
 		}
@@ -177,14 +200,14 @@ public class ParaTresNRayaUI extends TresNRayaUI {
 			}
 		}
 	}
-	
+
 	/**
 	 * Deshace la seleccion de una casilla que se quiere mover
 	 */
 	private void cancelarSeleccionMover() {
 		for (int i = 0; i < botonera.getBotones().length; i++) {
 			for (int j = 0; j < botonera.getBotones().length; j++) {
-				if(!botonera.getBotones()[i][j].isEnabled()) {
+				if (!botonera.getBotones()[i][j].isEnabled()) {
 					botonera.getBotones()[i][j].setEnabled(true);
 					control.mover = true;
 					btnCancelar.setVisible(false);

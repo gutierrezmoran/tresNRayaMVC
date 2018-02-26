@@ -25,6 +25,7 @@ public class TresNRayaUI extends JFrame {
 	protected JButton btnReiniciar;
 	protected JLabel txtEstado;
 	protected JButton btnCancelar;
+	protected JPanel splash;
 
 	/**
 	 * Create the frame.
@@ -40,6 +41,34 @@ public class TresNRayaUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		splash = new JPanel();
+		splash.setBackground(new Color(255, 255, 255));
+		splash.setBounds(0, 0, 380, 606);
+		contentPane.add(splash);
+		splash.setLayout(null);
+		
+		JLabel lblGames = new JLabel("Games");
+		lblGames.setBackground(new Color(255, 250, 240));
+		lblGames.setHorizontalAlignment(SwingConstants.CENTER);
+		lblGames.setFont(new Font("Segoe Script", Font.PLAIN, 50));
+		lblGames.setBounds(172, 141, 198, 48);
+		splash.add(lblGames);
+		
+		JLabel lblEmilio = new JLabel("GUTIERREZ'S");
+		lblEmilio.setOpaque(true);
+		lblEmilio.setBackground(new Color(224, 255, 255));
+		lblEmilio.setHorizontalAlignment(SwingConstants.CENTER);
+		lblEmilio.setFont(new Font("Impact", Font.PLAIN, 60));
+		lblEmilio.setForeground(Color.DARK_GRAY);
+		lblEmilio.setBounds(0, 88, 380, 69);
+		splash.add(lblEmilio);
+		
+		JLabel lblPresents = new JLabel("presents");
+		lblPresents.setHorizontalAlignment(SwingConstants.CENTER);
+		lblPresents.setFont(new Font("Source Sans Pro ExtraLight", Font.PLAIN, 20));
+		lblPresents.setBounds(0, 244, 380, 25);
+		splash.add(lblPresents);
 		botonera=new Botonera();
 		botonera.setBackground(new Color(220, 220, 220));
 		botonera.setBounds(0, 55, 380, 380);
@@ -98,15 +127,6 @@ public class TresNRayaUI extends JFrame {
 		btnReiniciar.setVisible(false);
 		btnReiniciar.setFocusPainted(false);
 		btnReiniciar.setBounds(219, 516, 149, 44);
-		btnReiniciar.addMouseListener(new MouseAdapter() {
-			public void mouseEntered(MouseEvent arg0) {
-				btnReiniciar.setBackground(new Color(255, 219, 86));
-			}
-
-			public void mouseExited(MouseEvent e) {
-				btnReiniciar.setBackground(Color.ORANGE);
-			}
-		});
 		contentPane.add(btnReiniciar);
 		
 		txtEstado = new JLabel("COLOCA FICHA");

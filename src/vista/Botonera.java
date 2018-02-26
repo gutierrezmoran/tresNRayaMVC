@@ -92,6 +92,7 @@ public class Botonera extends JPanel {
 	 *            Coordenada del eje Y
 	 */
 	private void asignarPropiedadesBoton(int i, int j, int coordenadaXBoton, int coordenadaYBoton) {
+		this.setVisible(false);
 		this.botones[i][j].setName(String.valueOf(i) + String.valueOf(j));
 		this.botones[i][j].setBounds(coordenadaXBoton, coordenadaYBoton, this.ladoBoton, this.ladoBoton);
 		this.botones[i][j].setBackground(
